@@ -1,0 +1,121 @@
+export class ItensPedido {
+  #id;
+  #pedidoId;
+  #idProduto;
+  #quantidade;
+  #valorItem;
+
+  constructor(pPedidoId, pIdProduto, pQuantidade, pValorItem, pID) {
+    this.#pedidoId = pPedidoId;
+    this.#idProduto = pIdProduto;
+    this.#quantidade = pQuantidade;
+    this.#valorItem = pValorItem;
+    this.#id = pID;
+  }
+
+  // Getters
+  get id() {
+    return this.#id;
+  }
+
+  get pedidoId() {
+    return this.#pedidoId;
+  }
+
+  get idProduto() {
+    return this.#idProduto;
+  }
+
+  get quantidade() {
+    return this.#quantidade;
+  }
+
+  get valorItem() {
+    return this.#valorItem;
+  }
+
+  // Setters
+  set id(value) {
+    this.#validarId(value);
+    this.#id = value;
+  }
+
+  set pedidoId(value) {
+    this.#validarPedidoId(value);
+    this.#pedidoId = value;
+  }
+
+  set idProduto(value) {
+    this.#validarProdutoId(value);
+    this.#idProduto = value;
+  }
+
+  set quantidade(value) {
+    this.#validarQuantidade(value);
+    this.#quantidade = value;
+  }
+
+  set valorItem(value) {
+    this.#validarValorItem(value);
+    this.#valorItem = value;
+  }
+
+  // Métodos auxiliares
+  #validarId(value) {
+    if (value && value <= 0) {
+      throw new Error("Verifique o ID informado");
+    }
+  }
+
+  #validarPedidoId(value) {
+    if (!value || value <= 0) {
+      throw new Error("Verifique o ID do pedido informado");
+    }
+  }
+
+  #validarProdutoId(value) {
+    if (!value || value <= 0) {
+      throw new Error("Verifique o ID do produto informado");
+    }
+  }
+
+  #validarQuantidade(value) {
+    if (!value || value <= 0) {
+      throw new Error("Informe uma quantidade válida");
+    }
+  }
+
+  #validarValorItem(value) {
+    if (!value || value <= 0) {
+      throw new Error("Informe um valor válido para o item");
+    }
+  }
+
+  static calcularSubTotal(itens) {
+    return itens.reduce(
+      (total, item) => total + item.valorItem * item.quantidade,
+      0,
+    );
+  }
+
+  // Factory Methods
+  static criar(dados) {
+    return new ItensPedido(
+      dados.pedidoId,
+      dados.idProduto,
+      dados.quantidade,
+      dados.valorItem,
+      null,
+    );
+  }
+
+  static editar(dados, id) {
+    return new ItensPedido(
+      dados.idPedido,
+      dados.idProduto,
+      dados.quantidade,
+      dados.valorItem,
+      id,
+    );
+  }
+}
