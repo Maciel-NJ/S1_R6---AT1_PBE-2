@@ -1,7 +1,8 @@
 import imagemProduto from "../controllers/imagemProduto.controller.js";
 import { Router } from "express";
 
-const imagemProdutoRouter = Router();
+const imagemProdutoRoutes = Router();
 
-imagemProdutoRouter.get("/imagem/:nome", imagemProduto.exibirImagem);
-export default imagemProdutoRouter;
+imagemProdutoRoutes.get("/produto/:nome", imagemProduto.exibirImagem);
+
+export default imagemProdutoRoutes;
