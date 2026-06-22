@@ -13,10 +13,10 @@ app.listen(process.env.SERVER_PORT, () => {
   );
 });
 
-initializeDatabase()
-  .then(() => {
+// initializeDatabase()
+//   .then(() => {
 
-  })
-  .catch((err) => {
-    console.error("Erro ao inicializar o banco de dados:", err);
-  });
+//   })
+//   .catch((err) => {
+//     console.error("Erro ao inicializar o banco de dados:", err);
+//   });
