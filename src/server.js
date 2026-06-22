@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import routes from "./routes/router.js";
-import { initializeDatabase } from "./config/Database.js";
+// import { initializeDatabase } from "./config/Database.js";
 let port = 8080;
 const app = express();
 app.use(express.json());
